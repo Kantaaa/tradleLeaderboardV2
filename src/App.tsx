@@ -1,22 +1,20 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ChakraProvider, Flex, VStack } from '@chakra-ui/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import DailyScoreboard from './components/DailyScoreboard';
-import WeeklyScoreboard from './components/WeeklyScoreboard';
-import MonthlyScoreboard from './components/MonthlyScoreboard';
-
+import ScoreForm from './components/ScoreForm';
+import ScoreboardTabs from './components/ScoreboardTabs';
 
 const App = () => {
   return (
     <ChakraProvider>
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<DailyScoreboard />} />
-          <Route path="/weekly" element={<WeeklyScoreboard />} />
-          <Route path="/monthly" element={<MonthlyScoreboard />} />
-          {/* Add other routes here */}
-        </Routes>
+        <Flex direction="column" minHeight="10vh" align="center" justify="center">
+          <VStack spacing={2} maxWidth="4xl" width="full" px={4}>
+            <ScoreForm />
+            <ScoreboardTabs />
+          </VStack>
+        </Flex>
       </Router>
     </ChakraProvider>
   );
